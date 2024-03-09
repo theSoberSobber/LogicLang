@@ -33,11 +33,11 @@ arg parseArg(int argc, char **argv) {
 int main(int argc, char **argv){
     arg argInfo = parseArg(argc, argv);
 
-    std::unique_ptr<lexer> codeParser = std::make_unique<lexer>(argInfo.inputPath);
-    codeParser->scan();
+    std::unique_ptr<lexer> lexer_inst = std::make_unique<lexer>(argInfo.inputPath);
+    lexer_inst->scan();
 
     #ifdef DEBUG_LEXER
-    codeParser->printTokenList();
+    lexer_inst->printTokenList();
     #endif
     return 0;
 }
