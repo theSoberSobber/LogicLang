@@ -19,6 +19,7 @@ jobs:
             mingw-w64-x86_64-binutils
             mingw-w64-x86_64-cmake
             mingw-w64-x86_64-make
+            diffutils
 
       - name: Checkout
         uses: actions/checkout@v2
