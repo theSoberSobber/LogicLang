@@ -3,5 +3,5 @@ project(LogicLang)
 
 set(CMAKE_CXX_STANDARD 17)
 
-aux_source_directory(. DIR_SRCS)
+aux_source_directory(src DIR_SRCS)
 add_executable(lgcc ${DIR_SRCS})
