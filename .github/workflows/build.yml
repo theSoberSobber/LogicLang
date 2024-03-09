@@ -1,0 +1,27 @@
+name: Check Build Status
+on: push
+jobs:
+  Windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+        
+    steps:
+      - name: Install dependencies
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            mingw-w64-x86_64-toolchain
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-binutils
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run : |
+          cmake -B build
+          cmake --build build
