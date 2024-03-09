@@ -31,7 +31,9 @@ jobs:
       - name: Tests
         shell: powershell
         run: |
+          ./build/lgcc.exe -i ./test/all
           ./build/lgcc.exe -i ./test/all | Out-File -FilePath "./test/output.txt" -Encoding ASCII
+          cat "./test/output.txt"
           if (-not (Compare-Object -ReferenceObject (Get-Content -Path "./test/all.out") -DifferenceObject (Get-Content -Path "./test/output.txt")) -eq $null) {
             Write-Output "Test output differs from expected output."
             exit 1

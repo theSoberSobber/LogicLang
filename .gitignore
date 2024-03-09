@@ -1,3 +1,4 @@
 build
 *.o
 *.exe
+test/output.txt
