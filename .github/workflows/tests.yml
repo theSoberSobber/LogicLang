@@ -33,10 +33,10 @@ jobs:
           ls build
       - name: Check Output
         run: |
-          ./build/lgcc.exe -i ./test/all
-      - name: Check Slashes?
+          ./build/lgcc.exe -i ./test/all > test/output.txt
+      - name: check it?
         run: |
-          .\build\lgcc.exe -i .\test\all
+          cat test/output.txt
       - name: Tests
         shell: powershell
         run: |
