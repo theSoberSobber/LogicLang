@@ -28,9 +28,12 @@ jobs:
         run : |
           cmake -B build
           cmake --build build
+
       - name: Run Executable
         run: |
           ./build/lgcc.exe -i ./test/all > test/output.txt
+          
+      - name: Test For Faults
         run: |
           if ! cmp -s ./test/all.out ./test/output.txt; then
             echo "Test output differs from expected output."
