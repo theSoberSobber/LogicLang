@@ -31,10 +31,22 @@ jobs:
       - name: Tests
         shell: powershell
         run: |
-          ./build/lgcc.exe -i ./test/all
           ./build/lgcc.exe -i ./test/all | Out-File -FilePath "./test/output.txt" -Encoding ASCII
-          cat "./test/output.txt"
-          if (-not (Compare-Object -ReferenceObject (Get-Content -Path "./test/all.out") -DifferenceObject (Get-Content -Path "./test/output.txt")) -eq $null) {
+          if (-not (Test-Path "./test/output.txt")) {
+            Write-Output "Error: Output file not found."
+            exit 1
+          }
+          $outputContent = Get-Content -Path "./test/output.txt" -ErrorAction SilentlyContinue
+          if (-not $outputContent) {
+            Write-Output "Error: Output file is empty."
+            exit 1
+          }
+          $expectedContent = Get-Content -Path "./test/all.out"
+          if (-not $expectedContent) {
+            Write-Output "Error: Expected output file not found."
+            exit 1
+          }
+          if (-not ($outputContent -eq $expectedContent)) {
             Write-Output "Test output differs from expected output."
             exit 1
           }
