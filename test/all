@@ -1,0 +1,15 @@
+if(acha){
+  acha hai bhai tu toh;
+}
+else {
+  while(not acha && ban ne ki iccha){
+    acha ban ja bhai, aise nahi chalega;
+    ban ja re;
+  }
+  if(still not acha){
+    tujhse behtar ummeed the;
+  } 
+  else {
+    yay, acha ban gaya!
+  }
+}
